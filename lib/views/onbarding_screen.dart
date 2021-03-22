@@ -1,9 +1,9 @@
 // this is widget shared in almost all screen in app
-import '../views/signin_screen.dart';
 import '../widgets/bottons_and_text_fields_materials.dart';
 
 // screen of app to navigator to it
-import 'signup_screen.dart';
+import './auth/signup_screen.dart';
+import './auth/signin_screen.dart';
 
 //dummy data
 import '../data/dummy_data.dart';
@@ -17,22 +17,19 @@ import 'package:dots_indicator/dots_indicator.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   static const String routeNamed = "onboardingScreen";
+  ValueNotifier<int> posIndecator = ValueNotifier(0);
 
   @override
   Widget build(BuildContext context) {
-    ValueNotifier<int> posIndecator = ValueNotifier(0);
-
     return Scaffold(
       // backgroundColor: CustomColors.transparentColor,
       body: Stack(
         alignment: Alignment.center,
         children: [
-          Image.asset(
-            "assets/images/background_image.png",
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.85,
-            fit: BoxFit.contain,
-          ),
+          //back ground image
+          backGroundImage(ctx: context),
+
+          //pageview to show screen on onboarding
           PageView.builder(
             itemBuilder: (ctx, index) =>
                 _buildOnBoardingPageChild(ctx, onbardingPages[index]),
@@ -41,79 +38,9 @@ class OnBoardingScreen extends StatelessWidget {
             },
             itemCount: onbardingPages.length,
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              ValueListenableBuilder(
-                valueListenable: posIndecator,
-                builder: (BuildContext context, value, Widget child) {
-                  return DotsIndicator(
-                    dotsCount: onbardingPages.length,
-                    position: posIndecator.value.toDouble(),
-                    decorator: DotsDecorator(
-                      size: const Size.square(9.0),
-                      activeSize: const Size(18.0, 9.0),
-                      activeShape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5.0)),
-                      color: CustomColors.greyColor,
-                      activeColor: CustomColors.mainColor,
-                    ),
-                  );
-                },
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              roundedButtonContainer(
-                ctx: context,
-                usedColor: CustomColors.mainColor,
-                widthFactor: 0.8,
-                childWidget: TextButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, SignInScreen.routeNamed);
-                  },
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    child: Center(
-                      child: Text(
-                        "Sign In",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          color: CustomColors.whiteColor,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              roundedButtonContainer(
-                ctx: context,
-                usedColor: CustomColors.greyColor,
-                widthFactor: 0.8,
-                childWidget: TextButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, SignUpScreen.routeNamed);
-                  },
-                  child: Text(
-                    "Create Account",
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: CustomColors.titleBlackColor,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-            ],
-          )
+
+          //column to show dots indecator and button of Sign in or sign up
+          _buildContainerOfIndecaorAndButtons(mainCtx: context),
         ],
       ),
     );
@@ -154,6 +81,82 @@ class OnBoardingScreen extends StatelessWidget {
             ),
             textAlign: TextAlign.center,
           ),
+        ),
+      ],
+    );
+  }
+
+  _buildContainerOfIndecaorAndButtons({BuildContext mainCtx}) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        ValueListenableBuilder(
+          valueListenable: posIndecator,
+          builder: (BuildContext context, value, Widget child) {
+            return DotsIndicator(
+              dotsCount: onbardingPages.length,
+              position: posIndecator.value.toDouble(),
+              decorator: DotsDecorator(
+                size: const Size.square(9.0),
+                activeSize: const Size(18.0, 9.0),
+                activeShape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0)),
+                color: CustomColors.greyColor,
+                activeColor: CustomColors.mainColor,
+              ),
+            );
+          },
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        roundedButtonContainer(
+          ctx: mainCtx,
+          usedColor: CustomColors.mainColor,
+          widthFactor: 0.8,
+          childWidget: TextButton(
+            onPressed: () {
+              Navigator.pushNamed(mainCtx, SignInScreen.routeNamed);
+            },
+            child: Container(
+              width: MediaQuery.of(mainCtx).size.width * 0.8,
+              child: Center(
+                child: Text(
+                  "Sign In",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    color: CustomColors.whiteColor,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        roundedButtonContainer(
+          ctx: mainCtx,
+          usedColor: CustomColors.greyColor,
+          widthFactor: 0.8,
+          childWidget: TextButton(
+            onPressed: () {
+              Navigator.pushNamed(mainCtx, SignUpScreen.routeNamed);
+            },
+            child: Text(
+              "Create Account",
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: CustomColors.titleBlackColor,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 20,
         ),
       ],
     );

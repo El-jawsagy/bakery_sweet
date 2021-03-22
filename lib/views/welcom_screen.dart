@@ -59,6 +59,9 @@ class WelcomScreen extends StatelessWidget {
                     SizedBox(
                       height: 20,
                     ),
+
+                    //button to navigat to next screen
+
                     roundedButtonContainer(
                       ctx: context,
                       usedColor: CustomColors.whiteColor,

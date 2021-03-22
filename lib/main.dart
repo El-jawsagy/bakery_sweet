@@ -1,12 +1,12 @@
 // screen of app to navigator to it
-import './views/signin_screen.dart';
-import './views/signup_screen.dart';
+import './views/auth/forget_pass.dart';
+import './views/auth/signin_screen.dart';
+import './views/auth/signup_screen.dart';
 import './views/onbarding_screen.dart';
 import './views/welcom_screen.dart';
 
 //theme and colors
 import './theme/theme.dart';
-
 
 //pub and core package
 import 'package:flutter/material.dart';
@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
         OnBoardingScreen.routeNamed: (ctx) => OnBoardingScreen(),
         SignUpScreen.routeNamed: (ctx) => SignUpScreen(),
         SignInScreen.routeNamed: (ctx) => SignInScreen(),
+        ForgetPassScreen.routeNamed: (ctx) => ForgetPassScreen(),
       },
     );
   }

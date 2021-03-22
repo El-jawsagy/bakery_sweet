@@ -2,6 +2,17 @@
 import 'package:bakery_sweet/theme/theme.dart';
 import 'package:flutter/material.dart';
 
+Widget backGroundImage({
+  BuildContext ctx,
+}) {
+  return Image.asset(
+    "assets/images/background_image.png",
+    width: MediaQuery.of(ctx).size.width,
+    height: MediaQuery.of(ctx).size.height * 0.75,
+    fit: BoxFit.cover,
+  );
+}
+
 Widget roundedButtonContainer(
     {BuildContext ctx,
     Widget childWidget,

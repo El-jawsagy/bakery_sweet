@@ -16,8 +16,8 @@ import 'package:flutter/material.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 
 class OnBoardingScreen extends StatelessWidget {
-  static const String routeNamed = "onboardingScreen";
-  ValueNotifier<int> posIndecator = ValueNotifier(0);
+  static final String routeNamed = "onboardingScreen";
+  final ValueNotifier<int> posIndecator = ValueNotifier(0);
 
   @override
   Widget build(BuildContext context) {
@@ -117,7 +117,10 @@ class OnBoardingScreen extends StatelessWidget {
           widthFactor: 0.8,
           childWidget: TextButton(
             onPressed: () {
-              Navigator.pushNamed(mainCtx, SignInScreen.routeNamed);
+              Navigator.pushReplacementNamed(
+                mainCtx,
+                SignInScreen.routeNamed,
+              );
             },
             child: Container(
               width: MediaQuery.of(mainCtx).size.width * 0.8,
@@ -145,12 +148,17 @@ class OnBoardingScreen extends StatelessWidget {
             onPressed: () {
               Navigator.pushNamed(mainCtx, SignUpScreen.routeNamed);
             },
-            child: Text(
-              "Create Account",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: CustomColors.titleBlackColor,
+            child: Container(
+              width: MediaQuery.of(mainCtx).size.width * 0.8,
+              child: Center(
+                child: Text(
+                  "Create Account",
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: CustomColors.titleBlackColor,
+                  ),
+                ),
               ),
             ),
           ),

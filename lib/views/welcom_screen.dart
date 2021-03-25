@@ -68,7 +68,7 @@ class WelcomScreen extends StatelessWidget {
                       widthFactor: 0.45,
                       childWidget: TextButton(
                         onPressed: () {
-                          Navigator.pushNamed(
+                          Navigator.pushReplacementNamed(
                               context, OnBoardingScreen.routeNamed);
                         },
                         child: Text(

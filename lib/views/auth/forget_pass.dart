@@ -1,6 +1,8 @@
 // this is widget shared in almost all screen in app
 import '../../widgets/bottons_and_text_fields_materials.dart';
 
+// screen of app to navigator to it
+
 //theme and colors
 import '../../theme/theme.dart';
 
@@ -8,7 +10,7 @@ import '../../theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class ForgetPassScreen extends StatelessWidget {
-  static const String routeNamed = "forgetPassScreen";
+  static final String routeNamed = "forgetPassScreen";
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();

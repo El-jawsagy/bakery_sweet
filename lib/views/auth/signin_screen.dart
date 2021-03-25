@@ -1,7 +1,10 @@
 // this is widget shared in almost all screen in app
-import 'package:bakery_sweet/views/auth/signup_screen.dart';
-
 import '../../widgets/bottons_and_text_fields_materials.dart';
+
+// screen of app to navigator to it
+
+import './signup_screen.dart';
+import '../main_home_screen.dart';
 
 //theme and colors
 import '../../theme/theme.dart';
@@ -10,7 +13,7 @@ import '../../theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class SignInScreen extends StatelessWidget {
-  static const String routeNamed = "signinScreen";
+  static final String routeNamed = "signinScreen";
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -30,25 +33,10 @@ class SignInScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  //back button to back previous screen
-
-                  Row(
-                    children: [
-                      IconButton(
-                        icon: Icon(
-                          Icons.arrow_back,
-                          size: 28,
-                        ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ],
-                  ),
                   //space
                   giveHeightSpace(
                     ctx: context,
-                    heightFactor: .03,
+                    heightFactor: .1,
                   ),
 
                   //text displayed to user
@@ -86,7 +74,10 @@ class SignInScreen extends StatelessWidget {
                     widthFactor: 0.8,
                     childWidget: TextButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, SignInScreen.routeNamed);
+                        Navigator.pushReplacementNamed(
+                          context,
+                          MainHomeScreen.routeNamed,
+                        );
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.8,
@@ -103,13 +94,13 @@ class SignInScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  
+
                   //space
                   giveHeightSpace(
                     ctx: context,
                     heightFactor: .3,
                   ),
-                  
+
                   _buildSignUpTextQue(
                     ctx: context,
                   ),

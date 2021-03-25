@@ -1,5 +1,8 @@
+//theme and colors
+import '../theme/theme.dart';
+
 //pub and core package
-import 'package:bakery_sweet/theme/theme.dart';
+
 import 'package:flutter/material.dart';
 
 Widget backGroundImage({
@@ -13,17 +16,20 @@ Widget backGroundImage({
   );
 }
 
-Widget roundedButtonContainer(
-    {BuildContext ctx,
-    Widget childWidget,
-    Color usedColor,
-    double widthFactor = .8}) {
+Widget roundedButtonContainer({
+  BuildContext ctx,
+  Widget childWidget,
+  Color usedColor,
+  double widthFactor = .8,
+  double heightFactor = .07,
+  double radiusValue = 40,
+}) {
   return Container(
     width: MediaQuery.of(ctx).size.width * widthFactor,
-    height: MediaQuery.of(ctx).size.height * .07,
+    height: MediaQuery.of(ctx).size.height * heightFactor,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.all(
-        Radius.circular(40),
+        Radius.circular(radiusValue),
       ),
       color: usedColor,
     ),

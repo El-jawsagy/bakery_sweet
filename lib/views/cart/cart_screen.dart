@@ -29,7 +29,6 @@ class CartScreen extends StatelessWidget {
           //screen widgets
           Consumer<Cart>(
             builder: (cartContex, cartProvider, _) {
-              print(" this is cart items ${cartProvider.cartItems}");
               return cartProvider.cartItems.length > 0
                   ? ProductsCartWidget(
                       productCartItem: cartProvider.cartItems,

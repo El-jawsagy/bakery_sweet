@@ -1,4 +1,7 @@
 // this is widget shared in almost all screen in app
+import 'package:flutter_phoenix/flutter_phoenix.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import '../../widgets/divider.dart';
 import '../../widgets/bottons_and_text_fields_materials.dart';
 
@@ -13,6 +16,9 @@ import '../../views/favorite/favorite_screen.dart';
 
 //pub and core package
 import 'package:flutter/material.dart';
+
+//language
+import '../../lang/applocate.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key key}) : super(key: key);
@@ -37,37 +43,72 @@ class ProfilePage extends StatelessWidget {
             ),
             _buildProfileRow(
               profileCtx: context,
-              titleRow: "Profile",
+              titleRow: AppLocale.of(context).getTranslated("profile"),
             ),
             DividerWidget(),
             _buildProfileRow(
               profileCtx: context,
-              titleRow: "Orders",
+              titleRow: AppLocale.of(context).getTranslated("order"),
               namedScreen: CartScreen.routeNamed,
             ),
             DividerWidget(),
             _buildProfileRow(
               profileCtx: context,
-              titleRow: "Favorite",
+              titleRow: AppLocale.of(context).getTranslated("favorite"),
               namedScreen: FavoriteScreen.routeNamed,
             ),
             DividerWidget(),
             _buildProfileRow(
               profileCtx: context,
-              titleRow: "About us",
+              titleRow: AppLocale.of(context).getTranslated("about"),
             ),
             DividerWidget(),
             _buildProfileRow(
                 profileCtx: context,
-                titleRow: "Support Center",
+                titleRow: AppLocale.of(context).getTranslated("support"),
                 namedScreen: SupportScreen.routeNamed),
             DividerWidget(),
             _buildProfileRowWithReplacement(
               profileCtx: context,
-              titleRow: "Log out",
+              titleRow: AppLocale.of(context).getTranslated("logout"),
               namedScreen: SignInScreen.routeNamed,
             ),
             DividerWidget(),
+            InkWell(
+              onTap: () async {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                String lang = prefs.getString("lang");
+                if (lang == 'ar') {
+                  setLang('en');
+                  Phoenix.rebirth(context);
+                } else {
+                  setLang('ar');
+                  Phoenix.rebirth(context);
+                }
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.translate,
+                        color: CustomColors.titleBlackColor,
+                      ),
+                      giveWidthSpace(ctx: context, widthFactor: 0.01),
+                      Text(
+                        AppLocale.of(context).getTranslated("language") == "ar"
+                            ? "English"
+                            : "العربية",
+                        style: Theme.of(context).textTheme.headline3,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
@@ -170,4 +211,9 @@ class ProfilePage extends StatelessWidget {
       ),
     );
   }
+}
+
+setLang(String lang) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setString("lang", lang);
 }

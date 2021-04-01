@@ -1,5 +1,6 @@
 // this is widget shared in almost all screen in app=
 import 'package:bakery_sweet/providers/cart/cart_provider.dart';
+import 'package:bakery_sweet/widgets/appbar_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../bottons_and_text_fields_materials.dart';
@@ -14,6 +15,9 @@ import '../../theme/theme.dart';
 //pub and core package
 import 'package:flutter/material.dart';
 
+//language
+import '../../lang/applocate.dart';
+
 class ProductsCartWidget extends StatelessWidget {
   final Map productCartItem;
   final double totalAmount;
@@ -21,11 +25,13 @@ class ProductsCartWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(productCartItem);
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
+          AppBarWidget(
+            title: AppLocale.of(context).getTranslated("my_order"),
+          ),
           Expanded(
             child: ListView.builder(
               physics: NeverScrollableScrollPhysics(),
@@ -40,7 +46,7 @@ class ProductsCartWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Total:",
+                AppLocale.of(context).getTranslated("total"),
                 style: Theme.of(context)
                     .textTheme
                     .headline1
@@ -62,7 +68,7 @@ class ProductsCartWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Delivery:",
+                AppLocale.of(context).getTranslated("delivery"),
                 style: Theme.of(context)
                     .textTheme
                     .headline1
@@ -95,7 +101,7 @@ class ProductsCartWidget extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: Center(
                   child: Text(
-                    "Check It",
+                    AppLocale.of(context).getTranslated("check_out"),
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
@@ -179,7 +185,9 @@ class ProductsCartWidget extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(6.0),
                           child: Text(
-                            prod.product["title"],
+                            AppLocale.of(ctx).getTranslated("language") == "ar"
+                                ? prod.product["title-ar"]
+                                : prod.product["title-en"],
                             style: Theme.of(ctx).textTheme.headline4,
                           ),
                         ),
@@ -192,7 +200,10 @@ class ProductsCartWidget extends StatelessWidget {
                           child: Container(
                             width: MediaQuery.of(ctx).size.width * 0.3,
                             child: Text(
-                              prod.product["subtitle"],
+                              AppLocale.of(ctx).getTranslated("language") ==
+                                      "ar"
+                                  ? prod.product["subtitle-ar"]
+                                  : prod.product["subtitle-en"],
                               maxLines: 3,
                               style: Theme.of(ctx).textTheme.headline6,
                               overflow: TextOverflow.ellipsis,
@@ -224,7 +235,7 @@ class ProductsCartWidget extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 4.0),
                           child: Text(
-                            "Quantity:",
+                            AppLocale.of(ctx).getTranslated("quentity"),
                             style: Theme.of(ctx).textTheme.headline4.copyWith(
                                   color: CustomColors.mainColor,
                                 ),

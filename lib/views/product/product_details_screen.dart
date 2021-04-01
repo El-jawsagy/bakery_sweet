@@ -15,13 +15,15 @@ import '../../providers/favorite/favorit_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+//language
+import '../../lang/applocate.dart';
+
 class ProductDetails extends StatelessWidget {
   static final String routeNamed = "productScreen";
   @override
   Widget build(BuildContext context) {
     var id = ModalRoute.of(context).settings.arguments;
     var allProducts = Provider.of<Product>(context);
-    print(id);
     Map productOfScreen =
         allProducts.productItems.firstWhere((pro) => pro["id"] == id);
     return Scaffold(
@@ -78,7 +80,8 @@ class ProductDetails extends StatelessWidget {
                           width: MediaQuery.of(context).size.width * 0.85,
                           child: Center(
                             child: Text(
-                              "Add to Order",
+                              AppLocale.of(cartCtx)
+                                  .getTranslated("add_to_cart"),
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
@@ -152,7 +155,9 @@ class ProductDetails extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            product["title"],
+            AppLocale.of(nameCtx).getTranslated("language") == "ar"
+                ? product["title-ar"]
+                : product["title-en"],
             style: Theme.of(nameCtx).textTheme.headline2.copyWith(
                   color: CustomColors.mainColor,
                   fontWeight: FontWeight.bold,
@@ -192,7 +197,9 @@ class ProductDetails extends StatelessWidget {
           Container(
             width: MediaQuery.of(detailsCtx).size.width * 0.85,
             child: Text(
-              product["subtitle"],
+              AppLocale.of(detailsCtx).getTranslated("language") == "ar"
+                  ? product["subtitle-ar"]
+                  : product["subtitle-en"],
               style: Theme.of(detailsCtx).textTheme.headline4,
             ),
           ),
@@ -209,7 +216,7 @@ class ProductDetails extends StatelessWidget {
       child: Row(
         children: [
           Text(
-            "Price: ",
+            AppLocale.of(priceCtx).getTranslated("price"),
             style: Theme.of(priceCtx).textTheme.headline3.copyWith(
                   color: CustomColors.mainColor,
                 ),

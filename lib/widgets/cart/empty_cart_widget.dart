@@ -9,6 +9,9 @@ import '../../theme/theme.dart';
 //pub and core package
 import 'package:flutter/material.dart';
 
+//language
+import '../../lang/applocate.dart';
+
 class EmptyCartWidget extends StatelessWidget {
   const EmptyCartWidget({Key key}) : super(key: key);
 
@@ -18,7 +21,7 @@ class EmptyCartWidget extends StatelessWidget {
       child: Column(
         children: [
           AppBarWidget(
-            title: "My Orders",
+            title: AppLocale.of(context).getTranslated("my_order"),
           ),
           giveHeightSpace(ctx: context, heightFactor: 0.1),
           _buildImage(
@@ -60,7 +63,7 @@ Widget _buildCartIsEmpatyTitle({
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "Your Basket Is Empty",
+          AppLocale.of(emptyCartCtx).getTranslated("empty_orders"),
           style: Theme.of(emptyCartCtx).textTheme.headline1.copyWith(
                 color: CustomColors.mainColor,
                 fontWeight: FontWeight.bold,
@@ -82,7 +85,8 @@ Widget _buildCartIsEmpatySubtitle({
         Container(
           width: MediaQuery.of(emptyCartCtx).size.width * 0.8,
           child: Text(
-            "Make you basket havey and food to it",
+                      AppLocale.of(emptyCartCtx).getTranslated("subtitle_empty_orders"),
+
             style: Theme.of(emptyCartCtx).textTheme.headline2.copyWith(
                 fontWeight: FontWeight.w400,
                 fontSize: 24,

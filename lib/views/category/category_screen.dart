@@ -1,6 +1,7 @@
 //screen that is navigat to it
 
 // this is widget shared in almost all screen in app
+
 import '../../widgets/product_ceil_widget.dart';
 import '../../widgets/appbar_widget.dart';
 import '../../widgets/bottons_and_text_fields_materials.dart';
@@ -15,6 +16,9 @@ import '../../providers/category/catergory_provider.dart';
 //pub and core package
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+//language
+import '../../lang/applocate.dart';
 
 class CategoryProductScreen extends StatelessWidget {
   static final String routeNamed = "categoryProductScreen";
@@ -37,7 +41,10 @@ class CategoryProductScreen extends StatelessWidget {
               return Column(
                 children: [
                   AppBarWidget(
-                    title: cartProvider.selectedCategory["title"],
+                    title:
+                        AppLocale.of(context).getTranslated("language") == "ar"
+                            ? cartProvider.selectedCategory["title-ar"]
+                            : cartProvider.selectedCategory["title-en"],
                   ),
                   Expanded(
                     child: ListView.builder(

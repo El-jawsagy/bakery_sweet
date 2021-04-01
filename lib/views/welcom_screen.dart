@@ -1,4 +1,5 @@
 // screen of app to navigator to it
+
 import '../views/onbarding_screen.dart';
 
 // this is widget shared in almost all screen in app
@@ -9,6 +10,9 @@ import '../theme/theme.dart';
 
 //pub and core package
 import 'package:flutter/material.dart';
+
+//language
+import '../lang/applocate.dart';
 
 class WelcomScreen extends StatelessWidget {
   @override
@@ -38,7 +42,7 @@ class WelcomScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "HAPPY MEALS",
+                      AppLocale.of(context).getTranslated("happy_meals"),
                       style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
@@ -49,7 +53,8 @@ class WelcomScreen extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      "Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
+                      AppLocale.of(context)
+                          .getTranslated("subtitle_happy_meals"),
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
@@ -72,7 +77,7 @@ class WelcomScreen extends StatelessWidget {
                               context, OnBoardingScreen.routeNamed);
                         },
                         child: Text(
-                          "Get Started",
+                          AppLocale.of(context).getTranslated("get_started"),
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w500,

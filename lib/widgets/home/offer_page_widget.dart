@@ -11,6 +11,9 @@ import '../../providers/products/prdoucts_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+//language
+import '../../lang/applocate.dart';
+
 class OfferPage extends StatelessWidget {
   const OfferPage({Key key}) : super(key: key);
 
@@ -60,9 +63,13 @@ class OfferPage extends StatelessWidget {
       child: Stack(
         children: [
           Align(
-            alignment: Alignment.bottomRight,
+            alignment: AppLocale.of(ctx).getTranslated("language") == "ar"
+                ? Alignment.bottomLeft
+                : Alignment.bottomRight,
             child: Image.asset(
-              "assets/images/offer_bike.png",
+              AppLocale.of(ctx).getTranslated("language") == "ar"
+                  ? "assets/images/offer_bike_ar.png"
+                  : "assets/images/offer_bike_en.png",
               width: MediaQuery.of(ctx).size.width * 0.45,
               height: MediaQuery.of(ctx).size.height * 0.2,
             ),
@@ -72,7 +79,7 @@ class OfferPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "LATEST OFFER",
+                AppLocale.of(ctx).getTranslated("last_offer"),
                 style: TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
@@ -85,7 +92,7 @@ class OfferPage extends StatelessWidget {
               Container(
                 width: MediaQuery.of(ctx).size.width * 0.55,
                 child: Text(
-                  "Get your Delicious Food Delivered from 3000+ Restaurants, Place Your Order And Save More. Order online from more than 3,000 restaurants and enjoy exclusive discounts and offers.",
+                  AppLocale.of(ctx).getTranslated("subtitle_last_offer"),
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w500,

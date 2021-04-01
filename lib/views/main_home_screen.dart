@@ -9,6 +9,9 @@ import '../widgets/home/profile_page_Widget.dart';
 //pub and core package
 import 'package:flutter/material.dart';
 
+//language
+import '../lang/applocate.dart';
+
 class MainHomeScreen extends StatefulWidget {
   static final String routeNamed = "mainScreen";
 
@@ -49,15 +52,15 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
             icon: Icon(
               Icons.home,
             ),
-            label: 'Home',
+            label: AppLocale.of(context).getTranslated("home"),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.local_fire_department),
-            label: 'Offer',
+            label: AppLocale.of(context).getTranslated("offer"),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Account',
+            label: AppLocale.of(context).getTranslated("account"),
           ),
         ],
       ),

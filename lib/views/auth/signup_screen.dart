@@ -1,5 +1,5 @@
 // this is widget shared in almost all screen in app
-import 'package:bakery_sweet/views/main_home_screen.dart';
+import '../../views/main_home_screen.dart';
 
 import '../../widgets/bottons_and_text_fields_materials.dart';
 
@@ -11,6 +11,9 @@ import '../../theme/theme.dart';
 
 //pub and core package
 import 'package:flutter/material.dart';
+
+//language
+import '../../lang/applocate.dart';
 
 class SignUpScreen extends StatelessWidget {
   static final String routeNamed = "signUpScreen";
@@ -43,7 +46,7 @@ class SignUpScreen extends StatelessWidget {
                   Container(
                     width: MediaQuery.of(context).size.width * 0.85,
                     child: Text(
-                      "Creat Your \n Account",
+                      AppLocale.of(context).getTranslated("register_title"),
                       style: TextStyle(
                         fontSize: 32,
                         fontWeight: FontWeight.w500,
@@ -83,7 +86,7 @@ class SignUpScreen extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * 0.8,
                         child: Center(
                           child: Text(
-                            "Sign Up",
+                            AppLocale.of(context).getTranslated("register"),
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
@@ -122,7 +125,7 @@ class SignUpScreen extends StatelessWidget {
             usedColor: CustomColors.greyColor,
             widthFactor: 0.85,
             controller: nameController,
-            hintTxt: "User Name",
+            hintTxt: AppLocale.of(context).getTranslated("user_name"),
           ),
           giveHeightSpace(
             ctx: context,
@@ -133,7 +136,7 @@ class SignUpScreen extends StatelessWidget {
             usedColor: CustomColors.greyColor,
             widthFactor: 0.85,
             controller: emailController,
-            hintTxt: "Email",
+            hintTxt: AppLocale.of(context).getTranslated("email"),
           ),
           giveHeightSpace(
             ctx: context,
@@ -144,7 +147,7 @@ class SignUpScreen extends StatelessWidget {
             usedColor: CustomColors.greyColor,
             widthFactor: 0.85,
             controller: emailController,
-            hintTxt: "Phone",
+            hintTxt: AppLocale.of(context).getTranslated("phone"),
           ),
           giveHeightSpace(
             ctx: context,
@@ -155,7 +158,7 @@ class SignUpScreen extends StatelessWidget {
             usedColor: CustomColors.greyColor,
             widthFactor: 0.85,
             controller: emailController,
-            hintTxt: "Password",
+            hintTxt: AppLocale.of(context).getTranslated("password"),
           ),
         ],
       ),
@@ -171,14 +174,14 @@ class SignUpScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "Already have an account?",
+            AppLocale.of(ctx).getTranslated("register_quetion"),
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16,
             ),
           ),
           Text(
-            "  Sign In",
+            AppLocale.of(ctx).getTranslated("register_login"),
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16,

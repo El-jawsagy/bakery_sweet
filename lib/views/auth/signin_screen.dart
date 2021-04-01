@@ -12,6 +12,9 @@ import '../../theme/theme.dart';
 //pub and core package
 import 'package:flutter/material.dart';
 
+//language
+import 'package:bakery_sweet/lang/applocate.dart';
+
 class SignInScreen extends StatelessWidget {
   static final String routeNamed = "signinScreen";
   final TextEditingController nameController = TextEditingController();
@@ -43,7 +46,7 @@ class SignInScreen extends StatelessWidget {
                   Container(
                     width: MediaQuery.of(context).size.width * 0.85,
                     child: Text(
-                      "Log in to your \n Account",
+                      AppLocale.of(context).getTranslated("login_title"),
                       style: TextStyle(
                         fontSize: 32,
                         fontWeight: FontWeight.w500,
@@ -83,7 +86,7 @@ class SignInScreen extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * 0.8,
                         child: Center(
                           child: Text(
-                            "Sign In",
+                            AppLocale.of(context).getTranslated("login"),
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
@@ -122,7 +125,7 @@ class SignInScreen extends StatelessWidget {
             usedColor: CustomColors.greyColor,
             widthFactor: 0.85,
             controller: emailController,
-            hintTxt: "Email",
+            hintTxt: AppLocale.of(context).getTranslated("email"),
           ),
           giveHeightSpace(
             ctx: context,
@@ -133,7 +136,7 @@ class SignInScreen extends StatelessWidget {
             usedColor: CustomColors.greyColor,
             widthFactor: 0.85,
             controller: emailController,
-            hintTxt: "Password",
+            hintTxt: AppLocale.of(context).getTranslated("password"),
           ),
         ],
       ),
@@ -149,14 +152,14 @@ class SignInScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "Don't have an account?",
+            AppLocale.of(ctx).getTranslated("login_quetion"),
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16,
             ),
           ),
           Text(
-            "  Sign Up",
+            AppLocale.of(ctx).getTranslated("login_register"),
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16,

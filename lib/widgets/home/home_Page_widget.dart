@@ -1,6 +1,6 @@
 // this is widget shared in almost all screen in app
 
-import 'package:bakery_sweet/views/category/category_screen.dart';
+import '../../views/category/category_screen.dart';
 
 import '../product_ceil_widget.dart';
 import '../bage_widget.dart';
@@ -22,6 +22,9 @@ import '../../providers/cart/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+//language
+import '../../lang/applocate.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
 
@@ -37,7 +40,7 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Delivered To ",
+                  AppLocale.of(context).getTranslated("deliver"),
                   style: Theme.of(context).textTheme.headline4,
                 ),
                 Consumer<Cart>(
@@ -60,7 +63,7 @@ class HomePage extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  "Current location ",
+                  AppLocale.of(context).getTranslated("location"),
                   style: Theme.of(context)
                       .textTheme
                       .headline2
@@ -90,7 +93,7 @@ class HomePage extends StatelessWidget {
                       widthFactor: 0.025,
                     ),
                     Text(
-                      "Search",
+                      AppLocale.of(context).getTranslated("search"),
                       style: Theme.of(context).textTheme.headline3,
                     )
                   ],
@@ -165,7 +168,9 @@ class HomePage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(6.0),
                 child: Text(
-                  cat["title"],
+                  AppLocale.of(ctx).getTranslated("language") == "ar"
+                      ? cat["title-ar"]
+                      : cat["title-en"],
                   style: Theme.of(ctx)
                       .textTheme
                       .headline5

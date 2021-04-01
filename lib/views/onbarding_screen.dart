@@ -1,4 +1,6 @@
 // this is widget shared in almost all screen in app
+import 'package:bakery_sweet/lang/applocate.dart';
+
 import '../widgets/bottons_and_text_fields_materials.dart';
 
 // screen of app to navigator to it
@@ -60,7 +62,9 @@ class OnBoardingScreen extends StatelessWidget {
           height: 20,
         ),
         Text(
-          onbardingPage["title"],
+          AppLocale.of(context).getTranslated("language") == "ar"
+              ? onbardingPage["title-ar"]
+              : onbardingPage["title-en"],
           style: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.w500,
@@ -73,7 +77,9 @@ class OnBoardingScreen extends StatelessWidget {
         Container(
           width: MediaQuery.of(context).size.width * 0.8,
           child: Text(
-            onbardingPage["sub_title"],
+            AppLocale.of(context).getTranslated("language") == "ar"
+                ? onbardingPage["sub_title-ar"]
+                : onbardingPage["sub_title-en"],
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w500,
@@ -126,7 +132,7 @@ class OnBoardingScreen extends StatelessWidget {
               width: MediaQuery.of(mainCtx).size.width * 0.8,
               child: Center(
                 child: Text(
-                  "Sign In",
+                  AppLocale.of(mainCtx).getTranslated("login"),
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
@@ -152,7 +158,7 @@ class OnBoardingScreen extends StatelessWidget {
               width: MediaQuery.of(mainCtx).size.width * 0.8,
               child: Center(
                 child: Text(
-                  "Create Account",
+                  AppLocale.of(mainCtx).getTranslated("create_account"),
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,

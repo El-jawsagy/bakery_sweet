@@ -12,6 +12,9 @@ import '../../providers/favorite/favorit_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+//language
+import '../../lang/applocate.dart';
+
 class FavoriteScreen extends StatelessWidget {
   static final String routeNamed = "favoriteProductScreen";
 
@@ -29,38 +32,41 @@ class FavoriteScreen extends StatelessWidget {
               return Column(
                 children: [
                   AppBarWidget(
-                    title: "Favorite",
+                    title: AppLocale.of(context).getTranslated("my_favorite"),
                   ),
-                  Expanded(
-                    child: ListView.builder(
-                      itemBuilder: (ctx, index) => Dismissible(
-                        background: Container(
-                          decoration: BoxDecoration(
-                            color: CustomColors.mainColor.withOpacity(0.8),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(
-                                7,
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Expanded(
+                      child: ListView.builder(
+                        itemBuilder: (ctx, index) => Dismissible(
+                          background: Container(
+                            decoration: BoxDecoration(
+                              color: CustomColors.mainColor.withOpacity(0.8),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(
+                                  7,
+                                ),
                               ),
                             ),
+                            child: Icon(
+                              Icons.delete,
+                              size: 32,
+                              color: CustomColors.whiteColor,
+                            ),
                           ),
-                          child: Icon(
-                            Icons.delete,
-                            size: 32,
-                            color: CustomColors.whiteColor,
-                          ),
+                          key: ValueKey(
+                              favoriteProvider.favoritItems[index]["id"]),
+                          onDismissed: (diraction) {
+                            favoriteProvider.toggleProductToFavorite(
+                                favoriteProvider.favoritItems[index]["id"]);
+                          },
+                          child: ProductCeil(
+                              product: favoriteProvider.favoritItems[index]),
                         ),
-                        key: ValueKey(
-                            favoriteProvider.favoritItems[index]["id"]),
-                        onDismissed: (diraction) {
-                          favoriteProvider.toggleProductToFavorite(
-                              favoriteProvider.favoritItems[index]["id"]);
-                        },
-                        child: ProductCeil(
-                            product: favoriteProvider.favoritItems[index]),
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: favoriteProvider.favoritItems.length,
                       ),
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemCount: favoriteProvider.favoritItems.length,
                     ),
                   )
                 ],

@@ -1,0 +1,57 @@
+{
+  "happy_meals":"HAPPY MEALS",
+  "subtitle_happy_meals": "Welcome to the Al-Rifai application. We are pleased with your presence in the application and we wish you to find meals and service that suit you.",
+  "get_started": "Get Started",
+
+
+  "login_title":  "Log into your \n Account",
+  "email":"Email",
+  "password":"Password",
+  "login":"Sign In",
+  "login_quetion": "Don't have an account?" ,
+  "login_register":"  Sign Up",
+  "create_account":"Create Account",
+  
+
+  "register_title" :"Create Your \n Account",
+  "register":"Sign Up",
+  "user_name":"User Name",
+  "phone":"Phone",
+  "register_quetion": "Don't have an account?" ,
+  "register_login":"  Sign In",
+
+
+  "home":"Home",
+  "offer":"Offer",
+  "account":"Account",
+  "deliver":" Delivering To",
+  "location":"Current location ",
+  "search": "Search",
+  "last_offer":"LATEST OFFER",
+  "subtitle_last_offer":  "Get your Delicious Food Delivered from 3000+ Restaurants, Place Your Order And Save More. Order online from more than 3,000 restaurants and enjoy exclusive discounts and offers.",
+  "profile":"Profile",
+  "order":"Orders",
+  "favorite":"Favorite",
+  "about": "About us",
+  "support": "Support Center",
+  "logout":"Log out",
+
+  "my_order":"My Orders",
+  "empty_orders":"Your Basket Is Empty",
+  "subtitle_empty_orders":"Make you basket havey and food to it",
+  "total":"Total:",
+  "delivery": "Delivery:",
+  "quentity":"Quantity:",
+  "check_out":"Check It",
+
+
+  "price": "Price: ",
+  "add_to_cart":"Add to Order",
+  
+  "my_favorite":"My Favorite",
+
+  
+  "language": "en"
+
+
+}

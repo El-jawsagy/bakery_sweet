@@ -1,5 +1,5 @@
 // screen of app to navigator to it
-import 'package:bakery_sweet/widgets/bottons_and_text_fields_materials.dart';
+import '../widgets/bottons_and_text_fields_materials.dart';
 
 import '../views/product/product_details_screen.dart';
 
@@ -8,6 +8,9 @@ import '../theme/theme.dart';
 
 //pub and core package
 import 'package:flutter/material.dart';
+
+//language
+import '../lang/applocate.dart';
 
 class ProductCeil extends StatelessWidget {
   final Map product;
@@ -60,7 +63,9 @@ class ProductCeil extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(6.0),
                     child: Text(
-                      product["title"],
+                      AppLocale.of(context).getTranslated("language") == "ar"
+                          ? product["title-ar"]
+                          : product["title-en"],
                       style: Theme.of(context).textTheme.headline2,
                     ),
                   ),
@@ -91,7 +96,9 @@ class ProductCeil extends StatelessWidget {
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.6,
                       child: Text(
-                        product["subtitle"],
+                        AppLocale.of(context).getTranslated("language") == "ar"
+                            ? product["subtitle-ar"]
+                            : product["subtitle-en"],
                         maxLines: 2,
                         style: Theme.of(context).textTheme.headline6,
                         overflow: TextOverflow.ellipsis,
